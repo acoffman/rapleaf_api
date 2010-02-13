@@ -1,87 +1,86 @@
-require 'rubygems'
-require "xml_magic"
-
-
 xml = <<XML
 <person id="43e345d500000000">
-  <basics>
-    <name>Brent Beer</name>
-    <gender>Male</gender>
-    <location>Saint Louis, SC</location>
-    <occupations>
-      <occupation job_title="Student" company="Southern Illinois University, Edwardsville"/>
-    </occupations>
-    <earliest_known_activity>2008-04-28</earliest_known_activity>
-    <latest_known_activity>2010-01-03</latest_known_activity>
-    <num_friends>6</num_friends>
-  </basics>
-  <memberships>
-    <primary>
-      <membership site="bebo.com" exists="false"/>
-      <membership site="facebook.com" exists="true"/>
-      <membership site="flickr.com" exists="false"/>
-      <membership site="friendster.com" exists="false"/>
-      <membership site="hi5.com" exists="false"/>
-      <membership site="linkedin.com" exists="true" profile_url="http://www.linkedin.com/pub/brent-beer/8/295/894" num_friends="6" num_followers="0"/>
-      <membership site="livejournal.com" exists="false"/>
-      <membership site="metroflog.com" exists="false"/>
-      <membership site="multiply.com" exists="false"/>
-      <membership site="myspace.com" exists="false"/>
-      <membership site="myyearbook.com" exists="false"/>
-      <membership site="plaxo.com" exists="false"/>
-      <membership site="twitter.com" exists="true" profile_url="http://twitter.com/brntbeer" image_url="http://a1.twimg.com/profile_images/533184650/beerbeers.jpg" num_followers="475"/>
-    </primary>
-    <supplemental>
-      <membership site="amazon.com" exists="true"/>
-      <membership site="wordpress.com" exists="true"/>
-    </supplemental>
-  </memberships>
+	<basics>
+		<name>Brent Beer</name>
+		<gender>Male</gender>
+		<location>Saint Louis, SC</location>
+		<occupations>
+			<occupation job_title="Student" company="Southern Illinois University, Edwardsville"/>
+		</occupations>
+		<earliest_known_activity>2008-04-28</earliest_known_activity>
+		<latest_known_activity>2010-01-03</latest_known_activity>
+		<num_friends>6</num_friends>
+	</basics>
+	<memberships>
+		<primary>
+			<membership site="bebo.com" exists="false"/>
+			<membership site="facebook.com" exists="true"/>
+			<membership site="flickr.com" exists="false"/>
+			<membership site="friendster.com" exists="false"/>
+			<membership site="hi5.com" exists="false"/>
+			<membership site="linkedin.com" exists="true" profile_url="http://www.linkedin.com/pub/brent-beer/8/295/894" num_friends="6" num_followers="0"/>
+			<membership site="livejournal.com" exists="false"/>
+			<membership site="metroflog.com" exists="false"/>
+			<membership site="multiply.com" exists="false"/>
+			<membership site="myspace.com" exists="false"/>
+			<membership site="myyearbook.com" exists="false"/>
+			<membership site="plaxo.com" exists="false"/>
+			<membership site="twitter.com" exists="true" profile_url="http://twitter.com/brntbeer" image_url="http://a1.twimg.com/profile_images/533184650/beerbeers.jpg" num_followers="475"/>
+		</primary>
+		<supplemental>
+			<membership site="amazon.com" exists="true"/>
+			<membership site="wordpress.com" exists="true"/>
+		</supplemental>
+	</memberships>
 </person>
 XML
+module RapleafApi
 
-class Person
+	class Person
 
-  def initialize(xml)
-    @xml = CommonThread::XML::XmlMagic.new(xml)
-  end
+		def initialize(xml)
+			@xml = CommonThread::XML::XmlMagic.new(xml)
+		end
 
-  def name
-    name = @xml.basics.name
-  end
+		def name
+			name = @xml.basics.name
+		end
 
-  def location
-    location = @xml.basics.location
-  end
+		def location
+			location = @xml.basics.location
+		end
 
-  def occupations
-    occupations = {}
-    for occupation in @xml.basics.occupations.occupation
-      occupations[occupation[:company]] = occupation[:job_title]
-    end
-    occupations
-  end
+		def occupations
+			occupations = {}
+			for occupation in @xml.basics.occupations.occupation
+				occupations[occupation[:company]] = occupation[:job_title]
+			end
+			occupations
+		end
 
-  def earliest_known_activity
-    location = @xml.basics.earliest_known_activity
-  end
+		def earliest_known_activity
+			location = @xml.basics.earliest_known_activity
+		end
 
-  def last_known_activity
-    last_known_activity @xml.basics.lastest_known_activity
-  end
+		def last_known_activity
+			last_known_activity @xml.basics.lastest_known_activity
+		end
 
-  def memberships(primary=true)
-    memberships = []
-    if primary 
-      for membership in @xml.memberships.primary.membership
-         memberships << membership[:site] unless membership[:exists] == "false"
-      end
-    else
-      for membership in @xml.memberships.supplemental.membership
-        memberships << membership[:site] unless membership[:exists] == "false"
-      end
-    end
-    memberships
-  end
+		def memberships(selection = :all)
+			memberships = []
+			if selection == :primary || selection == :all
+				for membership in @xml.memberships.primary.membership
+					memberships << membership[:site] unless membership[:exists] == "false"
+				end
+			end
+			if selection == :supplementary || selection == :all
+				for membership in @xml.memberships.supplemental.membership
+					memberships << membership[:site] unless membership[:exists] == "false"
+				end
+			end
+			memberships
+		end
+	end
 
 
 end
@@ -90,14 +89,14 @@ end
 
 p = Person.new(xml)
 p.occupations.each_pair do |key, value| 
-  puts "#{key} is #{value}"
+	puts "#{key} is #{value}"
 end
 
 
 stuff = CommonThread::XML::XmlMagic.new(xml)
 occupations = {}
 for occupation in stuff.basics.occupations.occupation
-  occupations[:key] = occupation[:company]
-  occupations[:value] = occupation[:job_title]
+	occupations[:key] = occupation[:company]
+	occupations[:value] = occupation[:job_title]
 end
 #puts occupations

@@ -1,14 +1,17 @@
-require 'net/http'
+module RapleafApi
+  class Graph
+  
+    def initialize( body )
+      @body = body
+    end
+  
+    def friends
+			if @body.include?(",")
+				@body.split(",")
+			else
+      	@body.split("\n")
+			end
+    end
 
-class Graph
-  
-  def initialize( body )
-    @body = body
-    @friends = []
   end
-  
-  def friends
-    @body.split("\n")
-  end
-  
 end

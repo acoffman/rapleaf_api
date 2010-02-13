@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.summary = %q{An interface to Rapleaf's person and graph APIs.}
   s.homepage = %q{http://github.com/thecoffman/rapleaf_api}
   s.description = %q{An interface to Rapleaf's person and graph APIs. Note that this library is not maintained by or affiliated with Rapleaf in any way and you will still need a (free) api key from Rapleaf to use this.}
-  s.files = [ "README.md", "Manifest.txt" ,"lib/rapleaf_api.rb", "lib/api/api.rb", "lib/api/graph.rb", "lib/api/person.rb"]
+  s.files = [ "README.md", "Manifest.txt" ,"lib/rapleaf_api.rb", "lib/api/api.rb", "lib/api/graph.rb", "lib/api/person.rb", "lib/api/errors.rb"]
   s.add_dependency(%q<xml-magic>, [">= 0"])
 end
