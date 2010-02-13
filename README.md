@@ -9,19 +9,20 @@ You need to first get an API key found here:
 [http://www.rapleaf.com/developer/](http://www.rapleaf.com/developer/)
   
 
-# Installation
+Installation
+------------
 
 	sudo gem install rapleaf_api
 
-# Usage
+Usage
+-----
 
 	require 'rubygems'
 	require 'rapleaf_api'
 
 	rapAPI = RapleafApi::Api.new("your api key")
 	
-Person API
-----------
+### Person API
 
 	#by email
 	person = rapAPI.query({:type => :person, {:email => "email"}})
@@ -32,8 +33,7 @@ Person API
 	#by site id
 	person = rapAPI.query({:type => :person, {:site => RapleafApi::TWITTER, :id => "twitter username"}})
 
-Graph API
----------
+### Graph API
 
 	#by email (note this query will only work if you have an email set stored with Rapleaf)
 	friendList = rapAPI.query({:type => :graph, {:id => "email address"}})
@@ -44,7 +44,8 @@ Graph API
 	#by Rapleaf ID, this will return a list of Rapleaf IDs
 	friendList = rapAPI.query({:type => :graph, {:id => "rapleaf id", :by_rapid => true}})
 	
-# Author
+Author
+------
 
 * Adam Coffman :: coffman.adam@gmail.com
 * Brent Beer :: brentbeer@gmail.com
