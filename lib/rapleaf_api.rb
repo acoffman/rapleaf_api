@@ -1,7 +1,6 @@
 require 'net/http'
-require 'net/http'
 
-%w{api.rb}.each do |file|
+%w{api.rb person.rb graph.rb}.each do |file|
   File.dirname(__FILE__) +"/api/" + file
 end
 
