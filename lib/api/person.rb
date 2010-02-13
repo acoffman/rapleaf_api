@@ -11,10 +11,6 @@ module RapleafApi
 			                                             'occupations' =>'occupation'}})
 		end
 
-		def xml
-			@xml
-		end
-
 		def rapleaf_id
 			@xml["id"]
 		end
@@ -57,6 +53,5 @@ module RapleafApi
 			memberships
 		end
 	end
-
 
 end
