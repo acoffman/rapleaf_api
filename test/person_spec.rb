@@ -126,4 +126,4 @@ describe RapleafApi::Person, "person" do
    end
   end
 
-end # person
+end
