@@ -6,7 +6,11 @@ module RapleafApi
     end
   
     def friends
-      @body.split("\n").to_a
+			if @body.include?(",")
+				@body.split(",")
+			else
+      	@body.split("\n")
+			end
     end
 
   end
