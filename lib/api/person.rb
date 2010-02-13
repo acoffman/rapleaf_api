@@ -42,6 +42,10 @@ module RapleafApi
 			@xml["basics"]["lastest_known_activity"]
 		end
 
+		def num_friends
+			@xml["basics"]["num_friends"]
+		end
+
 		def memberships(selection = :all)
 			memberships = []
 			if selection == :primary || selection == :all
