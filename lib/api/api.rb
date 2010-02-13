@@ -22,7 +22,7 @@ module RapleafApi
 
     def request(url)
       resp = Net::HTTP.get_response(URI.parse(url))
-      if resp.code == 200
+      if resp.code == "200"
         return resp.body
       else
         raise_response_errors(resp.code)
