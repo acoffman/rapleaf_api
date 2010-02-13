@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'ruby-debug'
 module RapleafApi
 
 	class Person
@@ -8,6 +6,7 @@ module RapleafApi
  			@xml = XmlSimple.xml_in(xml, {'ForceArray' => false,
                                     'GroupTags' =>{'primary' => 'membership',
 																			             'supplemental' => 'membership',
+																									 'universities' => 'university',
 			                                             'occupations' =>'occupation'}})
 		end
 
@@ -23,15 +22,24 @@ module RapleafApi
 		  @xml["basics"]["name"]
 		end
 
+		def age
+			@xml["basics"]["age"]
+		end
+
 		def gender
 			@xml["basics"]["gender"]
 		end
+
 		def location
 			@xml["basics"]["location"]
 		end
 
 		def occupations
 			@xml["basics"]["occupations"]
+		end
+
+		def universities
+			@xml["basics"]["universities"]
 		end
 
 		def earliest_known_activity
