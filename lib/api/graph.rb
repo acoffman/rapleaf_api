@@ -4,11 +4,10 @@ class Graph
   
   def initialize( body )
     @body = body
-    @friends = []
   end
   
   def friends
-    @body.split("\n")
+    @body.split("\n").to_a
   end
   
 end
