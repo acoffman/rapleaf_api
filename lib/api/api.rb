@@ -36,6 +36,7 @@ module RapleafApi
 
     def graph_request(params)
       raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_graph_url(params)
+      puts url
       request(url)
     end
 
