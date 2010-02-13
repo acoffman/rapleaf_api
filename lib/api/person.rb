@@ -1,9 +1,14 @@
+require 'rubygems'
+require 'ruby-debug'
 module RapleafApi
 
 	class Person
 
 		def initialize(xml)
- 			@xml = XmlSimple.xml_in(xml)
+ 			@xml = XmlSimple.xml_in(xml, {'ForceArray' => false,
+                                    'GroupTags' =>{'primary' => 'membership',
+																			             'supplemental' => 'membership',
+			                                             'occupations' =>'occupation'}})
 		end
 
 		def xml
@@ -18,44 +23,39 @@ module RapleafApi
 			@xml["basics"]
 		end
 
-		#def name
-			#@xml.basics.name
-		#end
+		def name
+		  @xml["basics"]["name"]
+		end
 
-		#def location
-			#@xml.basics.location
-		#end
+		def gender
+			@xml["basics"]["gender"]
+		end
+		def location
+			@xml["basics"]["location"]
+		end
 
-		#def occupations
-			#occupations = {}
-			#for occupation in @xml.basics.occupations.occupation
-				#occupations[occupation[:company]] = occupation[:job_title]
-			#end
-			#occupations
-		#end
+		def occupations
+			@xml["basics"]["occupations"]
+		end
 
-		#def earliest_known_activity
-			#@xml.basics.earliest_known_activity
-		#end
+		def earliest_known_activity
+			@xml["basics"]["earliest_known_activity"]
+		end
 
-		#def last_known_activity
-			#@xml.basics.lastest_known_activity
-		#end
+		def last_known_activity
+			@xml["basics"]["lastest_known_activity"]
+		end
 
-		#def memberships(selection = :all)
-			#memberships = {}
-			#if selection == :primary || selection == :all
-				#for membership in @xml.memberships.primary.membership
-					#memberships << membership[:site] unless membership[:exists] == "false"
-				#end
-			#end
-			#if selection == :supplementary || selection == :all
-				#for membership in @xml.memberships.supplemental.membership
-					#memberships << membership[:site] unless membership[:exists] == "false"
-				#end
-			#end
-			#memberships
-		#end
+		def memberships(selection = :all)
+			memberships = []
+			if selection == :primary || selection == :all
+				memberships << (@xml["memberships"]["primary"])
+			end
+			if selection == :supplemental || selection == :all
+				memberships << (@xml["memberships"]["supplemental"])
+			end
+			memberships
+		end
 	end
 
 
