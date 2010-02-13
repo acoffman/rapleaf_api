@@ -62,7 +62,7 @@ module RapleafApi
 				memberships = [] if memberships.nil?
 				memberships << (@xml["memberships"]["supplemental"])
 			end
-			memberships
+			memberships.compact
 		end
 	end
 

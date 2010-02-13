@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{rapleaf_api}
-  s.version = "0.1.0"
+  s.version = "0.1.5"
   s.date = %q{2/12/10}
   s.authors = ["Adam Coffman", "Brent Beer", "Mark Sands"]
   s.email = ["coffman.adam@gmail.com", "brent.beer@gmail.com", "marksands07@gmail.com"]
