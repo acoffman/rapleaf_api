@@ -55,11 +55,11 @@ module RapleafApi
 		end
 
 		def memberships(selection = :all)
-			memberships = []
 			if selection == :primary || selection == :all
-				memberships << (@xml["memberships"]["primary"])
+				memberships = (@xml["memberships"]["primary"])
 			end
 			if selection == :supplemental || selection == :all
+				memberships = [] if memberships.nil?
 				memberships << (@xml["memberships"]["supplemental"])
 			end
 			memberships

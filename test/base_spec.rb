@@ -47,16 +47,6 @@ describe RapleafApi do
     end # graph
 
     describe "person" do 
-      describe ".occupations" do 
-        it "should return a list of person occupations" do
-          xml = @person_xml
-          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
-          @api.stub!( :query ).and_return( xml )
-          @p = RapleafApi::Person.new( xml )
-          #@p.occupations.should == ""
-        end
-      end
-
       describe ".id" do 
         it "should return the person rapleaf id" do
           xml = @person_xml
@@ -64,6 +54,46 @@ describe RapleafApi do
           @api.stub!( :query ).and_return( xml )
           @p = RapleafApi::Person.new( xml )
           @p.rapleaf_id.should == "1d4c100000000000"
+        end
+      end
+      
+      describe ".name" do 
+        it "should return a list of person occupations" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.name.should == "Test Dummy"
+        end
+      end
+
+      describe ".gender" do 
+        it "should return a list of person occupations" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.gender.should == "Male"
+        end
+      end
+
+      describe ".occupations" do 
+        it "should return a list of person occupations" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.occupations.should == [{"company"=>"Rapleaf.com", "job_title"=>"Test Dummy"}, {"job_title"=>"Comedian"}]
+        end
+      end
+
+      describe ".memberships" do 
+        it "should return a list of person occupations" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.memberships[0].should == { "site" => "bebo.com", "exists" => "false" }
         end
       end
 
