@@ -32,7 +32,7 @@ describe RapleafApi do
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
           @api.stub!( :query ).and_return( xml )
           @g = RapleafApi::Graph.new( xml )
-          @g.friends
+          @g.friends[0].should == "dummy-friend-alpha@rapleaf.com"
         end
 
         it "should return a list of friend ids" do
@@ -40,7 +40,7 @@ describe RapleafApi do
           # param_hash = { :type => :person, :opts => { :id => "foo@bar.com", :return_rapid }}
           @api.stub!( :query ).and_return( xml )
           @g = RapleafApi::Graph.new( xml )
-          @g.friends
+          @g.friends[0].should == "00e1e692420913e3"
         end
 
       end
@@ -53,7 +53,7 @@ describe RapleafApi do
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
           @api.stub!( :query ).and_return( xml )
           @p = RapleafApi::Person.new( xml )
-          #@p.occupations
+          #@p.occupations.should == ""
         end
       end
 
@@ -63,7 +63,7 @@ describe RapleafApi do
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
           @api.stub!( :query ).and_return( xml )
           @p = RapleafApi::Person.new( xml )
-          @p.rapleaf_id
+          @p.rapleaf_id.should == "1d4c100000000000"
         end
       end
 
