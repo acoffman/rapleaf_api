@@ -1,5 +1,6 @@
 module RapleafApi
   class Api
+
     def initialize(api_key)
       @API_KEY = "?api_key=#{api_key}"
       @PERSON_URL = "http://api.rapleaf.com/v3/person/"
@@ -44,7 +45,7 @@ module RapleafApi
         return @PERSON_URL + "email/#{params[:email]}" + @API_KEY
       else
         return false unless params[:id] && (params[:hash] || params[:site])
-        return @Person + ("hash/#{params[:hash]}/#{params[:id]}" ? params[:hash] : "web/#{params[:site]}/#{params[:id]}") + @API_KEY 
+        return @PERSON_URL + ("hash/#{params[:hash]}/#{params[:id]}" ? params[:hash] : "web/#{params[:site]}/#{params[:id]}") + @API_KEY 
       end
     end
 
