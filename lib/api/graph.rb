@@ -1,15 +1,13 @@
 module RapleafApi
-
-class Graph
+  class Graph
   
-  def initialize( body )
-    @body = body
-  end
+    def initialize( body )
+      @body = body
+    end
   
-  def friends
-    @body.split("\n").to_a
+    def friends
+      @body.split("\n").to_a
+    end
+
   end
-
-end
-
 end
