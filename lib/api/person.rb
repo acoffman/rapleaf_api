@@ -1,3 +1,5 @@
+require 'ruby-debug'
+
 xml = <<XML
 <person id="43e345d500000000">
   <basics>
@@ -42,8 +44,17 @@ module RapleafApi
 			@xml = CommonThread::XML::XmlMagic.new(xml)
 		end
 
+		def rapleaf_id
+			debugger
+			@xml[:id]
+		end
+
+		def basics
+			@xml.basics
+		end
+
 		def memberships(selection = :all)
-			memberships = []
+			memberships = {}
 			if selection == :primary || selection == :all
 				for membership in @xml.memberships.primary.membership
 					 memberships << membership[:site] unless membership[:exists] == "false"
