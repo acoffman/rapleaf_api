@@ -1,7 +1,3 @@
-require 'rubygems'
-require "xml_magic"
-
-
 xml = <<XML
 <person id="43e345d500000000">
   <basics>
@@ -38,27 +34,29 @@ xml = <<XML
   </memberships>
 </person>
 XML
+module RapleafApi
 
-class Person
+	class Person
 
-  def initialize(xml)
-    @xml = CommonThread::XML::XmlMagic.new(xml)
-  end
+		def initialize(xml)
+			@xml = CommonThread::XML::XmlMagic.new(xml)
+		end
 
-  def memberships(primary=true)
-    memberships = []
-    if primary 
-      for membership in @xml.memberships.primary.membership
-         memberships << membership[:site] unless membership[:exists] == "false"
-      end
-    else
-      for membership in @xml.memberships.supplemental.membership
-        memberships << membership[:site] unless membership[:exists] == "false"
-      end
-    end
-    memberships
-    
-  end
+		def memberships(selection = :all)
+			memberships = []
+			if selection == :primary || selection == :all
+				for membership in @xml.memberships.primary.membership
+					 memberships << membership[:site] unless membership[:exists] == "false"
+				end
+			end
+			if selection == :supplementary || selection == :all
+				for membership in @xml.memberships.supplemental.membership
+					memberships << membership[:site] unless membership[:exists] == "false"
+				end
+			end
+			memberships
+		end
+	end
 
 end
 

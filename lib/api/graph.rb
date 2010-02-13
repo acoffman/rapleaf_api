@@ -1,4 +1,4 @@
-require 'net/http'
+module RapleafApi
 
 class Graph
   
@@ -9,5 +9,5 @@ class Graph
   def friends
     @body.split("\n").to_a
   end
-  
+
 end
