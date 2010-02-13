@@ -26,6 +26,7 @@ module RapleafApi
 		def gender
 			@xml["basics"]["gender"]
 		end
+
 		def location
 			@xml["basics"]["location"]
 		end
@@ -50,7 +51,7 @@ module RapleafApi
 			if selection == :supplemental || selection == :all
 				memberships << (@xml["memberships"]["supplemental"])
 			end
-			memberships
+			memberships.compact
 		end
 	end
 
