@@ -14,10 +14,6 @@ module RapleafApi
 			@xml["id"]
 		end
 
-		def basics
-			@xml["basics"]
-		end
-
 		#def name
 			#@xml.basics.name
 		#end
