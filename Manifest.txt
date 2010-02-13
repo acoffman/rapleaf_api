@@ -1,8 +1,5 @@
-.autotest
 History.txt
 Manifest.txt
 README.txt
 Rakefile
-bin/rapleaf_api
 lib/rapleaf_api.rb
-test/test_rapleaf_api.rb
