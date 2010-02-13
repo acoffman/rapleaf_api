@@ -4,3 +4,5 @@ README.txt
 Rakefile
 lib/rapleaf_api.rb
 lib/api/api.rb
+lib/api/graph.rb
+lib/api/person.rb
