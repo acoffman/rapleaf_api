@@ -46,6 +46,6 @@ Usage
 Authors
 -------
 
-* Adam Coffman :: coffman.adam@gmail.com
-* Brent Beer :: brentbeer@gmail.com
-* Mark Sands :: marksands07@gmail.com
+* [Adam Coffman](http://github.com/thecoffman) :: coffman.adam@gmail.com
+* [Brent Beer](http://github.com/brntbeer) :: brentbeer@gmail.com
+* [Mark Sands](http://github.com/marksands) :: marksands07@gmail.com
