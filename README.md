@@ -1,5 +1,4 @@
-rapleaf_api
-===========
+# rapleaf_api
 
 Getting Started
 ---------------
@@ -22,7 +21,7 @@ Usage
 
 	rapAPI = RapleafApi::Api.new("your api key")
 	
-	##### PERSON API #####
+### Person API
 
 	#by email
 	person = rapAPI.query({:type => :person, {:email => "email"}})
@@ -33,7 +32,7 @@ Usage
 	#by site id
 	person = rapAPI.query({:type => :person, {:site => RapleafApi::TWITTER, :id => "twitter username"}})
 
-	##### GRAPH API #####
+### Graph API
 
 	#by email (note this query will only work if you have an email set stored with Rapleaf)
 	friendList = rapAPI.query({:type => :graph, {:id => "email address"}})
