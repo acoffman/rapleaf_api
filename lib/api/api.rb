@@ -10,6 +10,7 @@ module RapleafApi
     def query(params)
 			raise "Invalid query, please use an :opts hash to specify your options" unless !params[:opts].nil?
       case params[:type]
+				when :person
           return Person.new(person_request(params[:opts]))
         when :graph
           return Graph.new(graph_request(params[:opts]))
