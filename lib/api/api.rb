@@ -19,8 +19,7 @@ module RapleafApi
 
     private
 
-    def person_request(params)
-      raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_person_url(params)
+    def request(url)
       resp = Net::HTTP.get_response(URI.parse(url))
       if resp.code == 200
         return resp.body
@@ -29,14 +28,14 @@ module RapleafApi
       end
     end
 
+    def person_request(params)
+      raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_person_url(params)
+      request(url)
+    end
+
     def graph_request(params)
       raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_graph_url(params)
-      resp = Net::HTTP.get_response(URI.parse(url))
-      if resp.code == 200
-        return resp.body
-      else
-        raise_response_errors(resp.code)
-      end
+      request(url)
     end
 
     def verify_and_build_person_url(params)
@@ -49,7 +48,16 @@ module RapleafApi
       end
     end
 
-    def verify_graph_format(params)
+    def verify_and_build_graph_url(params)
+      if params.size == 1
+        return false unless params[:email]
+        return @GRAPH_URL + params[:email] + @API_KEY
+      elsif params.size == 2
+        return false unless params[:by_rapid] || params[:return_rapid]
+        return @GRAPH_URL + params[:email] + @API_KEY + "&" + ("n=2" ? params[:by_rapid] : "n=1")
+      else
+        return false
+      end
     end
 
     def raise_response_errors(code)
