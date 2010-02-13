@@ -8,14 +8,14 @@ module RapleafApi
     end
 
     def query(params)
-			raise "Invalid query, please use an :opts hash to specify your options" unless !params[:opts].nil?
+			raise InvalidParams, "Invalid query, please use an :opts hash to specify your options" unless !params[:opts].nil?
       case params[:type]
 				when :person
           return Person.new(person_request(params[:opts]))
         when :graph
           return Graph.new(graph_request(params[:opts]))
         else
-          raise "Invalid query type, use either :graph or :person"
+          raise InvalidParams, "Invalid query type, use either :graph or :person"
       end
     end
 
@@ -31,12 +31,12 @@ module RapleafApi
     end
 
     def person_request(params)
-      raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_person_url(params)
+      raise InvalidParams, "Your params hash was formatted incorrectly!" unless url = verify_and_build_person_url(params)
       request(url)
     end
 
     def graph_request(params)
-      raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_graph_url(params)
+      raise InvalidParams, "Your params hash was formatted incorrectly!" unless url = verify_and_build_graph_url(params)
       request(url)
     end
 
@@ -65,17 +65,17 @@ module RapleafApi
     def raise_response_errors(code)
       case code 
         when "202"
-          raise "This person is currently being searched. Please check back shortly."
+          raise AcceptedException, "This person is currently being searched. Please check back shortly."
         when "400"
-          raise "Malformed request."
+          raise MalformedRequestException, "Malformed request."
         when "401"
-          raise "API Key invalid"
+          raise ApiKeyInvalidException, "API Key invalid"
         when "403"
-          raise "API Key query limit exceded, please contact developer@rapleaf.com to have your limit increased."
+          raise RateLimitExceededException, "API Key query limit exceded, please contact developer@rapleaf.com to have your limit increased."
         when "404"
-          raise "We do not have this person in our system. If you would like better results, consider supplying the email address."
+          raise PersonNotFoundException, "We do not have this person in our system. If you would like better results, consider supplying the email address."
         when "500"
-          raise "There was an unexpected error on our server. This should be very rare and if you see it please contact developer@rapleaf.com."
+          raise InternalServerError, "There was an unexpected error on our server. This should be very rare and if you see it please contact developer@rapleaf.com."
         else
           raise "Unkown Error"
       end

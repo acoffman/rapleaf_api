@@ -2,7 +2,7 @@ require 'rubygems'
 require 'net/http'
 require 'xml_magic'
 
-%w{api.rb person.rb graph.rb}.each do |file|
+%w{api.rb person.rb graph.rb errors.rb}.each do |file|
   require File.dirname(__FILE__) +"/api/" + file
 end
 
