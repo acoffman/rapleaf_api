@@ -6,6 +6,7 @@ require 'net/http'
 end
 
 module RapleafApi
+
   VERSION = '0.1.0'
 
   #Constants for web queries
@@ -19,5 +20,9 @@ module RapleafApi
   PLAXO = "plaxo"
   RAPLEAF = "rapleaf"
   TWITTER = "twitter"
-  
+
+  #constants for hash types
+  MD5 = "md5"
+  SHA1 = "sha1"
+
 end
