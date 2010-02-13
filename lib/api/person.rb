@@ -45,6 +45,30 @@ class Person
     @xml = CommonThread::XML::XmlMagic.new(xml)
   end
 
+  def name
+    name = @xml.basics.name
+  end
+
+  def location
+    location = @xml.basics.location
+  end
+
+  def occupations
+    occupations = {}
+    for occupation in @xml.basics.occupations.occupation
+      occupations[occupation[:company]] = occupation[:job_title]
+    end
+    occupations
+  end
+
+  def earliest_known_activity
+    location = @xml.basics.earliest_known_activity
+  end
+
+  def last_known_activity
+    last_known_activity @xml.basics.lastest_known_activity
+  end
+
   def memberships(primary=true)
     memberships = []
     if primary 
@@ -57,8 +81,23 @@ class Person
       end
     end
     memberships
-    
   end
+
 
 end
 
+
+
+p = Person.new(xml)
+p.occupations.each_pair do |key, value| 
+  puts "#{key} is #{value}"
+end
+
+
+stuff = CommonThread::XML::XmlMagic.new(xml)
+occupations = {}
+for occupation in stuff.basics.occupations.occupation
+  occupations[:key] = occupation[:company]
+  occupations[:value] = occupation[:job_title]
+end
+#puts occupations
