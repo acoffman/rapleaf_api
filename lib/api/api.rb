@@ -37,7 +37,6 @@ module RapleafApi
 
     def graph_request(params)
       raise "Your params hash was formatted incorrectly!" unless url = verify_and_build_graph_url(params)
-      puts url
       request(url)
     end
 
@@ -53,11 +52,11 @@ module RapleafApi
 
     def verify_and_build_graph_url(params)
       if params.size == 1
-        return false unless params[:email]
-        return @GRAPH_URL + params[:email] + @API_KEY
+        return false unless params[:id]
+        return @GRAPH_URL + params[:id] + @API_KEY
       elsif params.size == 2
-        return false unless params[:email] && (params[:by_rapid] || params[:return_rapid])
-        return @GRAPH_URL + params[:email] + @API_KEY + "&" + ( !params[:by_rapid].nil? ? "n=2" : "n=1")
+        return false unless params[:id] && (params[:by_rapid] || params[:return_rapid])
+        return @GRAPH_URL + params[:id] + @API_KEY + "&" + ( !params[:by_rapid].nil? ? "n=2" : "n=1")
       else
         return false
       end
