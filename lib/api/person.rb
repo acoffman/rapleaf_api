@@ -51,6 +51,7 @@ module RapleafApi
 
 		def basics
 			@xml.basics
+		end
 
 		def name
 			@xml.basics.name
