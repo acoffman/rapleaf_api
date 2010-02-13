@@ -95,19 +95,3 @@ module RapleafApi
 
 
 end
-
-
-
-p = Person.new(xml)
-p.occupations.each_pair do |key, value| 
-	puts "#{key} is #{value}"
-end
-
-
-stuff = CommonThread::XML::XmlMagic.new(xml)
-occupations = {}
-for occupation in stuff.basics.occupations.occupation
-	occupations[:key] = occupation[:company]
-	occupations[:value] = occupation[:job_title]
-end
-#puts occupations
