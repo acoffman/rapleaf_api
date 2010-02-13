@@ -55,7 +55,7 @@ module RapleafApi
         return false unless params[:email]
         return @GRAPH_URL + params[:email] + @API_KEY
       elsif params.size == 2
-        return false unless params[:by_rapid] || params[:return_rapid]
+        return false unless params[:email] && (params[:by_rapid] || params[:return_rapid])
         return @GRAPH_URL + params[:email] + @API_KEY + "&" + ( !params[:by_rapid].nil? ? "n=2" : "n=1")
       else
         return false
