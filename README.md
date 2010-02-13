@@ -43,8 +43,8 @@ Usage
 	#by Rapleaf ID, this will return a list of Rapleaf IDs
 	friendList = rapAPI.query({:type => :graph, {:id => "rapleaf id", :by_rapid => true}})
 	
-Author
-------
+Authors
+-------
 
 * Adam Coffman :: coffman.adam@gmail.com
 * Brent Beer :: brentbeer@gmail.com
