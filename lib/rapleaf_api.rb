@@ -1,7 +1,7 @@
 require 'net/http'
 
 %w{api.rb person.rb graph.rb}.each do |file|
-  File.dirname(__FILE__) +"/api/" + file
+  require File.dirname(__FILE__) +"/api/" + file
 end
 
 module RapleafApi
