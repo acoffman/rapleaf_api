@@ -46,7 +46,7 @@ module RapleafApi
         return @PERSON_URL + "email/#{params[:email]}" + @API_KEY
       else
         return false unless params[:id] && (params[:hash] || params[:site])
-        return @PERSON_URL + ("hash/#{params[:hash]}/#{params[:id]}" ? !params[:hash].nil? : "web/#{params[:site]}/#{params[:id]}") + @API_KEY 
+        return @PERSON_URL + (!params[:hash].nil? ? "hash/#{params[:hash]}/#{params[:id]}" : "web/#{params[:site]}/#{params[:id]}") + @API_KEY 
       end
     end
 
@@ -56,7 +56,7 @@ module RapleafApi
         return @GRAPH_URL + params[:email] + @API_KEY
       elsif params.size == 2
         return false unless params[:by_rapid] || params[:return_rapid]
-        return @GRAPH_URL + params[:email] + @API_KEY + "&" + ("n=2" ? !params[:by_rapid].nil? : "n=1")
+        return @GRAPH_URL + params[:email] + @API_KEY + "&" + ( !params[:by_rapid].nil? ? "n=2" : "n=1")
       else
         return false
       end
