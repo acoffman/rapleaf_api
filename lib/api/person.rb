@@ -47,7 +47,7 @@ module RapleafApi
 		end
 
 		def last_known_activity
-			@xml["basics"]["lastest_known_activity"]
+			@xml["basics"]["latest_known_activity"]
 		end
 
 		def num_friends
