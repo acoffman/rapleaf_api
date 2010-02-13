@@ -1,3 +1,5 @@
-class RapleafApi
-  VERSION = '1.0.0'
+require 'net/http'
+
+module RapleafApi
+  VERSION = '0.1.0'
 end
