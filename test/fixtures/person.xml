@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person id="1d4c100000000000">
+  <basics>
+    <name>Test Dummy</name>
+    <age>42</age>
+    <gender>Male</gender>
+    <location>San Francisco, CA, US</location>
+    <occupations>
+      <occupation job_title="Test Dummy" company="Rapleaf.com"/>
+      <occupation job_title="Comedian"/>
+    </occupations>
+    <universities>
+      <university>Berkeley</university>
+    </universities>
+    <earliest_known_activity>2006-02-23</earliest_known_activity>
+    <latest_known_activity>2008-09-25</latest_known_activity>
+    <num_friends>42</num_friends>
+  </basics>
+  <memberships>
+    <primary>
+      <membership site="bebo.com" exists="false"/>
+      <membership site="facebook.com" exists="false"/>
+      <membership site="flickr.com" exists="false"/>
+      <membership site="friendster.com" profile_url="http://profiles.friendster.com/5563" exists="true"/>
+      <membership site="hi5.com" profile_url="http://www.hi5.com/friend/4927" exists="true"/>
+      <membership site="linkedin.com" profile_url="http://linkedin.com/profile?viewProfile=&key=31212" exists="true"/>
+      <membership site="livejournal.com" exists="false"/>
+      <membership site="multiply.com" exists="false"/>
+      <membership site="myspace.com" profile_url="http://profile.myspace.com/index.cfm?fuseaction=user.viewprofile&friendID=26448756" exists="true" num_friends="42"/>
+      <membership site="myyearbook.com" exists="false"/>
+      <membership site="plaxo.com" exists="true"/>
+      <membership site="twitter.com" exists="false"/>
+    </primary>
+    <supplemental>
+      <membership site="amazon.com" exists="true"/>
+      <membership site="amazon.com/gp/registry/wishlist" profile_url="http://www.amazon.com/gp/registry/registry.html?type=wishlist&id=D5Z2DTHWZQ9Q" exists="true"/>
+      <membership site="ecademy.com" profile_url="http://www.ecademy.com/account.php?sha=1a886d0cf" exists="true"/>
+      <membership site="flixster.com" profile_url="http://www.flixster.com/user/dummy" image_url="http://images.flixster.com/profile/dummy.jpg" exists="true"/>
+      <membership site="ringo.com" exists="true"/>
+      <membership site="tickle.com" exists="true"/>
+      <membership site="tribe.com" profile_url="http://people.tribe.net/208cdbb3-1ac8a2886" exists="true"/>
+      <membership site="tribe.com" profile_url="http://people.tribe.net/a8b373d1-208c3b960" exists="true"/>
+      <membership site="yelp.com" profile_url="http://www.yelp.com/user_details?userid=DdfDOLCAA" exists="true"/>
+    </supplemental>
+  </memberships>
+</person>
