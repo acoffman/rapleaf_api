@@ -47,7 +47,17 @@ describe RapleafApi do
     end # graph
 
     describe "person" do 
-      describe ".id" do 
+      describe ".basics" do 
+        it "should return a hash of the basics tag" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.basics.should == {"name"=>"Test Dummy", "location"=>"San Francisco, CA, US", "earliest_known_activity"=>"2006-02-23", "universities"=>"Berkeley", "gender"=>"Male", "num_friends"=>"42", "latest_known_activity"=>"2008-09-25", "age"=>"42", "occupations"=> [{"company"=>"Rapleaf.com", "job_title"=>"Test Dummy"}, {"job_title"=>"Comedian"}]}
+        end
+      end
+      
+      describe ".rapleaf_id" do 
         it "should return the person rapleaf id" do
           xml = @person_xml
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
@@ -58,7 +68,7 @@ describe RapleafApi do
       end
       
       describe ".name" do 
-        it "should return a list of person occupations" do
+        it "should return the name of the person" do
           xml = @person_xml
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
           @api.stub!( :query ).and_return( xml )
@@ -67,8 +77,18 @@ describe RapleafApi do
         end
       end
 
+      describe ".age" do 
+        it "should return the age of the person" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.age.should == "42"
+        end
+      end
+
       describe ".gender" do 
-        it "should return a list of person occupations" do
+        it "should return the gender of the person" do
           xml = @person_xml
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
           @api.stub!( :query ).and_return( xml )
@@ -86,9 +106,39 @@ describe RapleafApi do
           @p.occupations.should == [{"company"=>"Rapleaf.com", "job_title"=>"Test Dummy"}, {"job_title"=>"Comedian"}]
         end
       end
+      
+      describe ".num_friends" do 
+        it "should return the number of friends a person has" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.num_friends.should == "42"
+        end
+      end
+      
+      describe ".earlist_known_activity" do 
+        it "should return the earlirest known activity date" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.earliest_known_activity.should == "2006-02-23"
+        end
+      end
+      
+      describe ".last_known_activity" do 
+        it "should return the last known activity date" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.last_known_activity.should == "2008-09-25"
+        end
+      end
 
-      describe ".memberships" do 
-        it "should return a list of person occupations" do
+      describe ".memberships[0]" do 
+        it "should return a hash of the first membership" do
           xml = @person_xml
           # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
           @api.stub!( :query ).and_return( xml )
