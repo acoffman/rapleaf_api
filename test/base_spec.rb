@@ -146,6 +146,26 @@ describe RapleafApi do
           @p.memberships[0].should == { "site" => "bebo.com", "exists" => "false" }
         end
       end
+      
+      describe ".memberships(:primary)" do 
+        it "should return a hash of the primary memberships" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.memberships(:primary).should == [{"site"=>"bebo.com", "exists"=>"false"}, {"site"=>"facebook.com", "exists"=>"false"}, {"site"=>"flickr.com", "exists"=>"false"}, {"profile_url"=>"http://profiles.friendster.com/5563", "site"=>"friendster.com", "exists"=>"true"}, {"profile_url"=>"http://www.hi5.com/friend/4927", "site"=>"hi5.com", "exists"=>"true"}, {"profile_url"=>"http://linkedin.com/profile?viewProfile=&key=31212", "site"=>"linkedin.com", "exists"=>"true"}, {"site"=>"livejournal.com", "exists"=>"false"}, {"site"=>"multiply.com", "exists"=>"false"}, {"num_friends"=>"42", "profile_url"=>"http://profile.myspace.com/index.cfm?fuseaction=user.viewprofile&friendID=26448756", "site"=>"myspace.com", "exists"=>"true"}, {"site"=>"myyearbook.com", "exists"=>"false"}, {"site"=>"plaxo.com", "exists"=>"true"}, {"site"=>"twitter.com", "exists"=>"false"}]
+        end
+      end
+      
+      describe ".memberships(:supplemental)" do 
+        it "should return a hash of the supplemental memberships" do
+          xml = @person_xml
+          # param_hash = { :type => :person, :opts => { :email => "foo@bar.com", :by_rapid }}
+          @api.stub!( :query ).and_return( xml )
+          @p = RapleafApi::Person.new( xml )
+          @p.memberships(:supplemental).should == [{"site"=>"amazon.com", "exists"=>"true"}, {"profile_url"=>"http://www.amazon.com/gp/registry/registry.html?type=wishlist&id=D5Z2DTHWZQ9Q", "site"=>"amazon.com/gp/registry/wishlist", "exists"=>"true"}, {"profile_url"=>"http://www.ecademy.com/account.php?sha=1a886d0cf", "site"=>"ecademy.com", "exists"=>"true"}, {"image_url"=>"http://images.flixster.com/profile/dummy.jpg", "profile_url"=>"http://www.flixster.com/user/dummy", "site"=>"flixster.com", "exists"=>"true"}, {"site"=>"ringo.com", "exists"=>"true"}, {"site"=>"tickle.com", "exists"=>"true"}, {"profile_url"=>"http://people.tribe.net/208cdbb3-1ac8a2886", "site"=>"tribe.com", "exists"=>"true"}, {"profile_url"=>"http://people.tribe.net/a8b373d1-208c3b960", "site"=>"tribe.com", "exists"=>"true"}, {"profile_url"=>"http://www.yelp.com/user_details?userid=DdfDOLCAA", "site"=>"yelp.com", "exists"=>"true"}]
+        end
+      end
 
     end # person
   end # query
