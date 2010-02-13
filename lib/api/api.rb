@@ -63,17 +63,17 @@ module RapleafApi
 
     def raise_response_errors(code)
       case code 
-        when 202
+        when "202"
           raise "This person is currently being searched. Please check back shortly."
-        when 400
+        when "400"
           raise "Malformed request."
-        when 401
+        when "401"
           raise "API Key invalid"
-        when 403
+        when "403"
           raise "API Key query limit exceded, please contact developer@rapleaf.com to have your limit increased."
-        when 404
+        when "404"
           raise "We do not have this person in our system. If you would like better results, consider supplying the email address."
-        when 500
+        when "500"
           raise "There was an unexpected error on our server. This should be very rare and if you see it please contact developer@rapleaf.com."
         else
           raise "Unkown Error"
