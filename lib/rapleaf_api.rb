@@ -8,7 +8,7 @@ end
 
 module RapleafApi
 
-  VERSION = '0.1.0'
+  VERSION = '0.1.5'
 
   #Constants for web queries
   BEBO = "bebo"
