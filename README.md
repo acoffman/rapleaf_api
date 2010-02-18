@@ -42,8 +42,7 @@ Usage
 	#by Rapleaf ID, this will return a list of Rapleaf IDs
 	friendList = rapAPI.query({:type => :graph, {:id => "rapleaf id", :by_rapid => true}})
 	
-More Advanced Examples:
-* [More Advanced Examples](http://github.com/thecoffman/rapleaf_api/blob/master/sample/api_examples.rb) :: Combine the APIs for interesting results.
+[More Advanced Examples](http://github.com/thecoffman/rapleaf_api/blob/master/sample/api_examples.rb) :: Combine the APIs for interesting results.
 
 Authors
 -------
