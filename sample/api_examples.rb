@@ -1,3 +1,16 @@
+#This file is shows an example of a very simple way to combine the Rapleaf APIs
+#We run a user through the Grap API to get a list of their friends.
+#We then run their friends through Person API and aggregate the results. 
+#That allows us to get some interesting aggregate stats very easily.
+#This particular example gets the average age of their first degree friends
+#as well as their average friend count and the number of them that have Twitter accounts
+#
+#We could very easily run each returned friend back through the Graph API to expand our graph 
+#out by one degree before we searched the Person API. This would mean our aggregate stats would 
+#cover both first and second degree friends
+#
+#WARNING: These techniques can burn through queries very quickly. Make sure you know what your
+#query limits are.
 require 'rubygems'
 require 'rapleaf_api'
 
