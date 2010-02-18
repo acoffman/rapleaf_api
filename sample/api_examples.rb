@@ -1,5 +1,5 @@
 #This file is shows an example of a very simple way to combine the Rapleaf APIs
-#We run a user through the Grap API to get a list of their friends.
+#We run a user through the Graph API to get a list of their friends.
 #We then run their friends through Person API and aggregate the results. 
 #That allows us to get some interesting aggregate stats very easily.
 #This particular example gets the average age of their first degree friends
