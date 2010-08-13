@@ -37,7 +37,7 @@ Usage
 	friendList = rapAPI.query({:type => :graph, :opts => {:id => "email address"}})
 
 	#by email, return Rapleaf IDs instead of scoped emails
-	friendList = rapAPI.query({:type => :graph, {:id => "email address", :return_rapid => true}})
+	friendList = rapAPI.query({:type => :graph, :opts => {:id => "email address", :return_rapid => true}})
 
 	#by Rapleaf ID, this will return a list of Rapleaf IDs
 	friendList = rapAPI.query({:type => :graph, :opts => {:id => "rapleaf id", :by_rapid => true}})
