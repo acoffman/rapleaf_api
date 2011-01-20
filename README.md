@@ -1,5 +1,7 @@
 # rapleaf_api
 
+NOTE: The Rapleaf API has changed versions and formats since this gem was created. I am going to leave it up here for reference but for production code you should look for Rapleaf's officially maintained repository [Personalization-Dev-Kits](https://github.com/Rapleaf/Personalization-Dev-Kits)
+
 Getting Started
 ---------------
 
